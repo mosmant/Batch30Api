@@ -27,9 +27,9 @@ public class C01_GetRequest {
         //  Oldugunu test edin
         String url = "https://restful-booker.herokuapp.com/booking/3";
 
-        Response response = given().
+        Response response = given().   // gerekliligi ifade eder.
                 accept("application/json").
-                when().
+                when().  // kullanıcı action ı
                 get(url);
 
         // gonderilen requestin response unu assign ettik. Response classini rest assured library den aldik.
