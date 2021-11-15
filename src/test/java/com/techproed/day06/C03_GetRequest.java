@@ -6,6 +6,10 @@ import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 public class C03_GetRequest extends DummyTestBase {
@@ -52,21 +56,23 @@ public class C03_GetRequest extends DummyTestBase {
 
         Assert.assertTrue(jsonPath.getList("data.employee_name").contains("Rhona Davidson"));
 
-        Assert.assertTrue(jsonPath.getList("data.employee_age").contains(21) ||
+        Assert.assertTrue(jsonPath.getList("data.employee_age").stream().anyMatch(t-> t.equals(21) || t.equals(61) || t.equals(23)));
 
-                jsonPath.getList("data.employee_age").contains(23) ||
+        List<Integer> arananyaslar = Arrays.asList(21,23,61);
 
-                jsonPath.getList("data.employee_age").contains(61));
+        /*
+        List<Integer> arananyaslar1 = new ArrayList<>();
 
-//        List<Integer> list=new ArrayList<Integer>();
-//
-//        list.add(21);
-//
-//        list.add(23);
-//
-//        list.add(61);
-//
-//        Assert.assertTrue(jsonPath.getList("data.employee_age").containsAll(list));
+        arananyaslar1.add(21);
+        arananyaslar1.add(23);
+        arananyaslar1.add(61);
+        */
+
+        Assert.assertTrue(jsonPath.getList("data.emplyee_age").containsAll(arananyaslar));
+
+
+       // Assert.assertTrue(jsonPath.getList("data.employee_age").stream().anyMatch(t-> t.equals(21) && t.equals(61) && t.equals(23)));
+
 
     }
 
