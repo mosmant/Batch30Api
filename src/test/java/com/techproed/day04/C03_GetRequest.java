@@ -13,6 +13,8 @@ public class C03_GetRequest {
     public void test2() {
 
         // BU TEST BIZDE CALISMADI.
+        // artik calisti
+
 
         String url = "https://restful-booker.herokuapp.com/booking/1001";
 
