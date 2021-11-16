@@ -2,6 +2,7 @@ package com.techproed.day08;
 
 import com.techproed.testBase.HerokuAppTestBase;
 import com.techproed.testData.HerokuappTestData;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,6 +44,25 @@ public class C01_GetRequest extends HerokuAppTestBase {
         // request gonder
         Response response = given().accept("application/json").spec(spec02).when().get("/{parameter1}/{paramater2}");
         response.prettyPrint();
+        /*
+        // JSONPATH ILE
+
+        JsonPath jsonPath = response.jsonPath();
+
+        Assert.assertEquals(expectedData.get("firstname"),jsonPath.getString("firstname"));
+        Assert.assertEquals(expectedData.get("lastname"),jsonPath.getString("lastname"));
+        Assert.assertEquals(expectedData.get("totalprice"),jsonPath.getInt("totalprice"));
+        Assert.assertEquals(expectedData.get("depositpaid"),jsonPath.getBoolean("depositpaid"));
+
+        Assert.assertEquals(((Map)expectedData.get("bookingdates")).get("checkin"),
+                            (jsonPath.getString("bookingdates.checkin")));
+
+        Assert.assertEquals(((Map)expectedData.get("bookingdates")).get("checkout"),
+                            (jsonPath.getString("bookingdates.checkout")));
+
+        */
+
+        // serilization yolu ile
 
         // actual result
         HashMap <String , Object > actualData = response.as(HashMap.class);
@@ -68,7 +88,11 @@ public class C01_GetRequest extends HerokuAppTestBase {
 
 
 
+        /*
+        KOCAMAN NOT HEROKUAPP SITESINDE SUREKLI OLARAK JSON DATALAR DEGISIYOR.
 
+        comparisonfailure exception almamiz normal...
+         */
 
 
 
