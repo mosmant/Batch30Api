@@ -63,6 +63,18 @@ public class C02_GetRequestTestData extends JsonPlaceHolderTestBase {
         // --object mapper
         // --pojo class ile birlikte map kullanacagiz.
 
+        HashMap<String,Object> actualData = response.as(HashMap.class);
+
+        System.out.println(actualData);
+
+        // deserilization islemi yukaridaki islemdir.
+
+        Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
+
+        Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
+
+        Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
+
 
 
 
