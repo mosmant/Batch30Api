@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class HerokuappTestData {
 
-    // {
+    //{
     //    "firstname": "Susan",
     //    "lastname": "Ericsson",
     //    "totalprice": 521,
@@ -35,6 +35,8 @@ public class HerokuappTestData {
     }
 
     public JSONObject SetupTestandRequestData(){
+
+        // JSONObject ne ise yarar-> hashmap ile data type karmasasini ve casting islmelerini yok etmek icin kullaniriz.
 
         JSONObject bookingdates = new JSONObject();
         bookingdates.put("checkin","2020-09-09");
